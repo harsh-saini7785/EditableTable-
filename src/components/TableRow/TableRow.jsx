@@ -3,7 +3,8 @@ import { Box, IconButton, Tooltip } from '@mui/material';
 import SaveRoundedIcon from '@mui/icons-material/SaveRounded';
 import UndoRoundedIcon from '@mui/icons-material/UndoRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import EditableCell from './EditableCell';
+import EditableCell from '../EditableCell/EditableCell';
+import { styles } from './style';
 
 const ACTION_WIDTH = 132;
 
@@ -20,22 +21,18 @@ function Row({ index, style, data }) {
     <Box
       style={style}
       sx={{
-        display: 'flex',
-        alignItems: 'center',
+        ...styles.rowBase,
         bgcolor: isDirty
           ? 'rgba(232,179,57,0.06)'
           : zebra
             ? 'transparent'
             : 'rgba(255,255,255,0.012)',
-        borderBottom: '1px solid',
-        borderColor: 'divider',
         borderLeft: isDirty ? '2px solid' : '2px solid transparent',
         borderLeftColor: isDirty ? 'primary.main' : 'transparent',
-        '&:hover': { bgcolor: 'rgba(255,255,255,0.03)' },
       }}
     >
       {columns.map((col) => (
-        <Box key={col.key} sx={{ width: col.width, flexShrink: 0, display: 'flex', alignItems: 'center' }}>
+        <Box key={col.key} sx={{ ...styles.cellWrapper, width: col.width }}>
           <EditableCell
             value={col.key === 'id' ? startIndex + index + 1 : row[col.key]}
             column={col}
@@ -46,13 +43,9 @@ function Row({ index, style, data }) {
 
       <Box
         sx={{
+          ...styles.actionsWrapperBase,
           width: ACTION_WIDTH,
-          flexShrink: 0,
-          display: 'flex',
-          justifyContent: 'center',
-          gap: 0.25,
           opacity: isDirty ? 1 : 0.25,
-          transition: 'opacity 0.15s ease',
         }}
       >
         <Tooltip title="Save row">

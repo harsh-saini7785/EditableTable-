@@ -1,14 +1,19 @@
-import { memo } from 'react';
-import {
-  Box, Typography, Button, Chip, ToggleButtonGroup, ToggleButton,
-  Pagination, Tooltip,
-} from '@mui/material';
-import FilterAltOffRoundedIcon from '@mui/icons-material/FilterAltOffRounded';
-import FileDownloadRoundedIcon from '@mui/icons-material/FileDownloadRounded';
 import DoneAllRoundedIcon from '@mui/icons-material/DoneAllRounded';
-import ViewStreamRoundedIcon from '@mui/icons-material/ViewStreamRounded';
+import FileDownloadRoundedIcon from '@mui/icons-material/FileDownloadRounded';
+import FilterAltOffRoundedIcon from '@mui/icons-material/FilterAltOffRounded';
 import LastPageRoundedIcon from '@mui/icons-material/LastPageRounded';
-import { exportToCsv } from '../utils/csv';
+import ViewStreamRoundedIcon from '@mui/icons-material/ViewStreamRounded';
+import {
+  Box,
+  Button, Chip,
+  Pagination,
+  ToggleButton,
+  ToggleButtonGroup,
+  Tooltip
+} from '@mui/material';
+import { memo } from 'react';
+import { exportToCsv } from '../../utils/csv';
+import { styles } from './style';
 
 function Toolbar({
   columns, derivedRows, totalRows, dirtyCount, sorts, filters,
@@ -20,19 +25,19 @@ function Toolbar({
 
   return (
     <Box>
-      <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 1.5 }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mr: 'auto' }}>
+      <Box sx={styles.header}>
+        <Box sx={styles.statsContainer}>
           <Chip
             size="small"
             label={`${derivedRows.length.toLocaleString()} / ${totalRows.toLocaleString()} rows`}
-            sx={{ fontWeight: 600, bgcolor: 'rgba(255,255,255,0.05)' }}
+            sx={styles.chipRows}
           />
           {dirtyCount > 0 && (
             <Chip
               size="small"
               color="warning"
               label={`${dirtyCount} unsaved`}
-              sx={{ fontWeight: 700, bgcolor: 'primary.main', color: '#1a1300' }}
+              sx={styles.chipUnsaved}
             />
           )}
           {sorts.length > 0 && (
@@ -88,7 +93,7 @@ function Toolbar({
               startIcon={<DoneAllRoundedIcon />}
               disabled={dirtyCount === 0}
               onClick={onSaveAll}
-              sx={{ color: '#1a1300' }}
+              sx={styles.saveButton}
             >
               Save all
             </Button>
@@ -97,7 +102,7 @@ function Toolbar({
       </Box>
 
       {mode === 'paginated' && (
-        <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 1.5 }}>
+        <Box sx={styles.paginationContainer}>
           <Pagination
             size="small"
             count={pageCount}

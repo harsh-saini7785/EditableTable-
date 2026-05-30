@@ -1,6 +1,6 @@
 import { Box, Typography, Container } from '@mui/material';
 import GridViewRoundedIcon from '@mui/icons-material/GridViewRounded';
-import DataTable from './components/DataTable';
+import DataTable from './components/DataTable/DataTable';
 import { TableProvider, useTable } from './context/TableContext';
 import { useUnsavedGuard } from './hooks/useUnsavedGuard';
 
@@ -43,7 +43,7 @@ function Shell() {
         </Box>
         <Box>
           <Typography variant="h6" sx={{ lineHeight: 1.1 }}>
-            Aperture
+            Cloudagle
           </Typography>
           <Typography variant="caption" sx={{ color: 'text.secondary', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
             Editable Data Table · 10k rows

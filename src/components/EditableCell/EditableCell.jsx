@@ -1,5 +1,6 @@
 import { memo, useState, useEffect, useRef } from 'react';
 import { Box, InputBase, Typography } from '@mui/material';
+import { styles } from './style';
 
 // Inline editable cell. Click to edit; Enter commits, Esc reverts the in-progress edit.
 function EditableCell({ value, column, onCommit }) {
@@ -40,7 +41,7 @@ function EditableCell({ value, column, onCommit }) {
     return (
       <Typography
         variant="body2"
-        sx={{ color: 'text.secondary', textAlign: column.align || 'left', px: 1.5, width: '100%' }}
+        sx={{ ...styles.nonEditableText, textAlign: column.align || 'left' }}
       >
         {display}
       </Typography>
@@ -60,12 +61,7 @@ function EditableCell({ value, column, onCommit }) {
           else if (e.key === 'Escape') cancel();
         }}
         sx={{
-          px: 1.5,
-          width: '100%',
-          fontSize: '0.875rem',
-          color: 'text.primary',
-          bgcolor: 'rgba(232,179,57,0.08)',
-          borderRadius: 1,
+          ...styles.editingInputBase,
           '& input': { textAlign: column.align || 'left', p: 0, py: 0.5 },
         }}
       />
@@ -81,18 +77,11 @@ function EditableCell({ value, column, onCommit }) {
         if (e.key === 'Enter') setEditing(true);
       }}
       sx={{
-        px: 1.5,
-        py: 0.5,
-        width: '100%',
-        cursor: 'text',
-        borderRadius: 1,
+        ...styles.editableBoxBase,
         textAlign: column.align || 'left',
-        transition: 'background 0.12s ease',
-        '&:hover': { bgcolor: 'rgba(255,255,255,0.04)' },
-        '&:focus-visible': { outline: '1px solid', outlineColor: 'primary.main' },
       }}
     >
-      <Typography variant="body2" sx={{ color: 'text.primary' }} component="span">
+      <Typography variant="body2" sx={styles.editableText} component="span">
         {display}
       </Typography>
     </Box>

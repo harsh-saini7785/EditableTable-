@@ -1,0 +1,80 @@
+export const styles = {
+  sortIndicatorWrapper: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    ml: 0.5,
+    color: 'primary.main',
+  },
+  sortIcon: {
+    fontSize: 14,
+  },
+  sortOrder: {
+    fontSize: 10,
+    fontWeight: 700,
+    ml: 0.2,
+  },
+  stickyHeader: {
+    position: 'sticky',
+    top: 0,
+    zIndex: 2,
+  },
+  labelsContainer: {
+    display: 'flex',
+    alignItems: 'stretch',
+    bgcolor: '#11141c',
+    borderBottom: '1px solid',
+    borderColor: 'divider',
+  },
+  labelCell: {
+    flexShrink: 0,
+    px: 1.5,
+    py: 1.25,
+    display: 'flex',
+    alignItems: 'center',
+    cursor: 'pointer',
+    userSelect: 'none',
+    '&:hover': { bgcolor: 'rgba(255,255,255,0.03)' },
+  },
+  labelText: {
+    fontWeight: 700,
+    letterSpacing: '0.06em',
+    textTransform: 'uppercase',
+    fontSize: '0.68rem',
+  },
+  actionsLabelWrapper: {
+    flexShrink: 0,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  actionsLabelText: {
+    fontWeight: 700,
+    letterSpacing: '0.06em',
+    textTransform: 'uppercase',
+    color: 'text.secondary',
+    fontSize: '0.68rem',
+  },
+  filtersContainer: {
+    display: 'flex',
+    bgcolor: '#0e1118',
+    borderBottom: '1px solid',
+    borderColor: 'divider',
+  },
+  filterCell: {
+    flexShrink: 0,
+    p: 0.75,
+  },
+  filterInput: {
+    width: '100%',
+    fontSize: '0.78rem',
+    px: 1,
+    py: 0.25,
+    borderRadius: 1,
+    bgcolor: 'rgba(255,255,255,0.04)',
+    color: 'text.primary',
+    '& input::placeholder': { color: 'text.secondary', opacity: 0.6 },
+  },
+  actionsSpacer: {
+    flexShrink: 0,
+  },
+};

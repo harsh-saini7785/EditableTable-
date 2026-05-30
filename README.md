@@ -40,6 +40,35 @@ npm run preview  # preview the production build
 
 ---
 
+## Folder Structure
+
+The application's components are modularized, cleanly separating React UI logic from styling. Each component resides in its own directory containing a `.jsx` file and a `style.js` file for extracted Material UI `sx` props.
+
+```text
+src/
+├── App.jsx
+├── main.jsx
+├── theme.js
+├── components/
+│   ├── DataTable/       # Main container and virtualization logic
+│   │   ├── DataTable.jsx
+│   │   └── style.js
+│   ├── EditableCell/    # Inline editing logic and states
+│   ├── TableHeader/     # Labels, sorting indicators, and filter inputs
+│   ├── TableRow/        # Virtualized row and action buttons
+│   └── Toolbar/         # Action buttons, mode toggles, and pagination
+├── context/
+│   └── TableContext.jsx # Global state management for rows & edits
+├── hooks/
+│   ├── useDerivedRows.js
+│   └── useUnsavedGuard.js
+└── utils/
+    ├── csv.js
+    └── data.js
+```
+
+---
+
 ## Approach & decisions
 
 - **State management**: `TableContext` backed by `useReducer`. Rows live in a single store; edits, undo history (a per-row snapshot stack), and a `dirtyIds` set are all reducer-managed. This keeps mutation logic centralized and predictable, mirroring Redux patterns without the dependency.

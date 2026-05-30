@@ -1,12 +1,13 @@
 import { useState, useMemo, useCallback, useRef } from 'react';
 import { Box, Paper, useTheme } from '@mui/material';
 import { FixedSizeList } from 'react-window';
-import TableHeader from './TableHeader';
-import Row, { ACTION_WIDTH } from './TableRow';
-import Toolbar from './Toolbar';
-import { useTable } from '../context/TableContext';
-import { useDerivedRows } from '../hooks/useDerivedRows';
-import { COLUMNS } from '../utils/data';
+import TableHeader from '../TableHeader/TableHeader';
+import Row, { ACTION_WIDTH } from '../TableRow/TableRow';
+import Toolbar from '../Toolbar/Toolbar';
+import { useTable } from '../../context/TableContext';
+import { useDerivedRows } from '../../hooks/useDerivedRows';
+import { COLUMNS } from '../../utils/data';
+import { styles } from './style';
 
 const ROW_HEIGHT = 44;
 const PAGE_SIZE = 100;
@@ -85,7 +86,7 @@ export default function DataTable() {
   );
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', minHeight: 0 }}>
+    <Box sx={styles.container}>
       <Toolbar
         columns={COLUMNS}
         derivedRows={derived}
@@ -104,20 +105,10 @@ export default function DataTable() {
 
       <Paper
         elevation={0}
-        sx={{
-          flex: 1,
-          minHeight: 0,
-          mt: 2,
-          border: '1px solid',
-          borderColor: 'divider',
-          borderRadius: 2,
-          overflow: 'hidden',
-          display: 'flex',
-          flexDirection: 'column',
-        }}
+        sx={styles.paper}
       >
-        <Box sx={{ flex: 1, minHeight: 0, overflowX: 'auto', overflowY: 'hidden' }}>
-          <Box sx={{ minWidth: totalWidth, height: '100%', display: 'flex', flexDirection: 'column' }}>
+        <Box sx={styles.scrollContainer}>
+          <Box sx={{ ...styles.tableWrapper, minWidth: totalWidth }}>
             <TableHeader
               columns={COLUMNS}
               sorts={sorts}
@@ -126,9 +117,9 @@ export default function DataTable() {
               onFilterChange={handleFilterChange}
             />
 
-            <Box sx={{ flex: 1, minHeight: 0 }}>
+            <Box sx={styles.listContainer}>
               {visibleRows.length === 0 ? (
-                <Box sx={{ p: 6, textAlign: 'center', color: 'text.secondary' }}>
+                <Box sx={styles.emptyState}>
                   No rows match the current filters.
                 </Box>
               ) : (
@@ -155,7 +146,7 @@ function AutoHeightList({ listRef, itemCount, itemData, rowHeight }) {
   }, []);
 
   return (
-    <Box ref={measureRef} sx={{ height: '100%' }}>
+    <Box ref={measureRef} sx={styles.autoHeightWrapper}>
       <FixedSizeList
         ref={listRef}
         height={height}
