@@ -79,8 +79,9 @@ export default function DataTable() {
       onSave: saveRow,
       onUndo: undoRow,
       onCancel: handleCancel,
+      startIndex: mode === 'paginated' ? page * PAGE_SIZE : 0,
     }),
-    [visibleRows, dirtyIds, handleCellCommit, saveRow, undoRow, handleCancel]
+    [visibleRows, dirtyIds, handleCellCommit, saveRow, undoRow, handleCancel, mode, page]
   );
 
   return (

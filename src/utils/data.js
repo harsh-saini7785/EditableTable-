@@ -39,7 +39,7 @@ export function generateRows(count = 10000) {
 
 // Column definitions drive the whole table (render, edit, sort, filter, export).
 export const COLUMNS = [
-  { key: 'id', label: 'ID', type: 'number', width: 80, editable: false, align: 'right' },
+  { key: 'id', label: '#', type: 'number', width: 80, editable: false, align: 'right' },
   { key: 'name', label: 'Name', type: 'text', width: 200, editable: true },
   { key: 'email', label: 'Email', type: 'text', width: 280, editable: true },
   { key: 'department', label: 'Department', type: 'text', width: 150, editable: true },

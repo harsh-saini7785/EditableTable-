@@ -9,7 +9,7 @@ const ACTION_WIDTH = 132;
 
 // One virtualized row. `style` comes from react-window and MUST be applied.
 function Row({ index, style, data }) {
-  const { rows, columns, dirtyIds, onCellCommit, onSave, onUndo, onCancel } = data;
+  const { rows, columns, dirtyIds, onCellCommit, onSave, onUndo, onCancel, startIndex = 0 } = data;
   const row = rows[index];
   if (!row) return null;
 
@@ -37,7 +37,7 @@ function Row({ index, style, data }) {
       {columns.map((col) => (
         <Box key={col.key} sx={{ width: col.width, flexShrink: 0, display: 'flex', alignItems: 'center' }}>
           <EditableCell
-            value={row[col.key]}
+            value={col.key === 'id' ? startIndex + index + 1 : row[col.key]}
             column={col}
             onCommit={(val) => onCellCommit(row.id, col.key, val)}
           />
