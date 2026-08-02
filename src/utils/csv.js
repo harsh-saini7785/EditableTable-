@@ -19,3 +19,4 @@ export function exportToCsv(filename, columns, rows) {
   document.body.removeChild(link);
   URL.revokeObjectURL(url);
 }
+

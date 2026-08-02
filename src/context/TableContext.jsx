@@ -115,3 +115,4 @@ export function useTable() {
   if (!ctx) throw new Error('useTable must be used within a TableProvider');
   return ctx;
 }
+

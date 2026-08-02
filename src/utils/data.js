@@ -48,3 +48,4 @@ export const COLUMNS = [
   { key: 'quantity', label: 'Qty', type: 'number', width: 100, editable: true, align: 'right' },
   { key: 'rating', label: 'Rating', type: 'number', width: 110, editable: true, align: 'right' },
 ];
+

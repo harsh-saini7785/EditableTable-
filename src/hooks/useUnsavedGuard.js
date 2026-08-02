@@ -13,3 +13,4 @@ export function useUnsavedGuard(hasUnsaved) {
     return () => window.removeEventListener('beforeunload', handler);
   }, [hasUnsaved]);
 }
+

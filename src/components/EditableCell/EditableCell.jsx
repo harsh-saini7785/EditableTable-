@@ -89,3 +89,4 @@ function EditableCell({ value, column, onCommit }) {
 }
 
 export default memo(EditableCell);
+

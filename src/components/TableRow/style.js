@@ -19,3 +19,4 @@ export const styles = {
     transition: 'opacity 0.15s ease',
   },
 };
+

@@ -85,3 +85,4 @@ function TableHeader({ columns, sorts, onToggleSort, filters, onFilterChange }) 
 }
 
 export default memo(TableHeader);
+

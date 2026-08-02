@@ -78,3 +78,4 @@ export const styles = {
     flexShrink: 0,
   },
 };
+
