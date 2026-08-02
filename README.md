@@ -88,3 +88,4 @@ src/
 - Undo is per-row; there is no global cross-row undo timeline.
 - Numeric filter parsing supports single operators only (no ranges like `10..20`).
 # EditableTable-
+
